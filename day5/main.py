@@ -1,0 +1,10 @@
+movielist = ["Tấm cám", "Doreamon", "Mắt Biếc", "Người nhện", "Người điên"]
+print("Phim đã xem ", movielist)
+# movielist.append(input("Nhập vào tên phim khác mà bạn cũng đã xem "))
+# print("Phim bạn đã xem là: ", movielist)
+print(movielist[0])
+print(movielist[-1])
+print(movielist[int(len(movielist)/2)])
+print("Tổng số bộ phim là", len(movielist))
+print(movielist.remove("Tấm cám"))
+print(movielist.pop(-1))
