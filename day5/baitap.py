@@ -10,3 +10,4 @@ new_string=friends[:]
 new_string2=friends.copy()
 print(new_string)
 print(new_string2)
+print(friends[1:-1])
