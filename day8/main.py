@@ -21,5 +21,34 @@ else:
 # print(eval("1*8+5*9"))
 # lst=list(map(eval,input().split()))
 # print(lst)
-lst=[1,2,3,4,5,6]
-print(*lst,sep=" và ")
+# lst=[1,2,3,4,5,6]
+# print(*lst,sep=" và ")
+# lst=[4,5,7,8,9,6,2]
+# lst.sort()
+# print(lst)
+# new_lst = sorted(lst,reverse=True)
+# print(new_lst)
+# char ="b"
+# charhoa="B"
+# print("ASCII code ",ord(char)-ord(charhoa))
+# ascii_code=65
+# print(chr(ascii_code))
+# lst=list(map(eval,input().split()))
+# print(lst)
+# print(divmod(4,5))
+# a=int(input("mời bạn nhập số giây", ))
+# tup1=divmod(a,360)
+# tup2=divmod(tup1[1],60)
+# print(f"Quy đổi ra được {tup1[0]} giờ, {tup2[0]} phút và {tup2[1]} giây")
+# intnumber=17
+# binary=bin(intnumber)
+# print(binary)
+# # print(binary[2:])
+# # bin()
+# print(format(intnumber,"b"))
+# print(list(range(255)))
+r1=range(255)
+r2=range(100)
+a=int(input("xin mời bạn nhập giá trị ",))
+b=(a*255)//100
+print("giá trị tương ứng trong mã 255 là",b)
