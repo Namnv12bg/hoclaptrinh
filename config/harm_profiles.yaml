@@ -1,0 +1,194 @@
+# Tệp: config/harm_profiles.yaml
+# (FINAL V10.0.1) - HARM PROFILES: SOUL UPGRADE (UNIFIED ENGINE)
+# Features: Neo Zen Voicing (Open), Breath Filter (CC74), Micro-Drift
+#
+# Ghi chú:
+# - Các profile HARM/DRONE dùng cho HarmEngineV9 & DroneEngineV2.
+# - AIR PAD "v8_pad_v7_shimmer" đã chuyển sang config/melody_profiles.yaml
+#   để phù hợp với Zen Core (AirEngine dùng melody_profiles).
+# - Đã chuẩn hoá:
+#   + Mọi PAD đều khai báo rõ: v7_harm_mode, channel, program, velocity.
+#   + Tham số drift & breath_filter có default rõ ràng để tránh thiếu key.
+#   + DRONE profile có v7_harm_mode riêng ("drone") cho dễ map UI/Engine.
+
+# --- 1. SPACE LAYER (PAD - Nền tảng) ---
+
+harm_chord_pad:
+  v7_harm_mode: pad
+  channel: 1
+  program: 89  # Warm Pad
+  velocity: 80
+  v9_motion_mode: "low_motion"
+
+  # [SOUL UPGRADE] Không gian rộng mở
+  v9_voicing_mode: "neo_zen_open"
+
+  # [ANALOG FEEL] Trôi nhẹ
+  enable_drift: true
+  drift_amount_cents: 8.0
+  drift_cycle_secs: 40.0
+
+  # [THE LUNGS] Phổi của Pad: Sáng khi hít, Tối khi thở
+  enable_breath_filter: true
+  filter_min_cc: 30  # Tối/Ấm
+  filter_max_cc: 95  # Sáng vừa phải (tránh chói)
+
+v8_warm_pad:
+  v7_harm_mode: pad
+  channel: 1
+  program: 90  # Polysynth
+  velocity: 75
+  v9_motion_mode: "low_motion"
+
+  # Neo Zen voicing mở, dùng làm nền chính cho layered style
+  v9_voicing_mode: "neo_zen_open"
+
+  # Pad chính trôi nhiều hơn một chút
+  enable_drift: true
+  drift_amount_cents: 10.0
+  drift_cycle_secs: 30.0
+
+  # Pad này thở mạnh hơn chút
+  enable_breath_filter: true
+  filter_min_cc: 20
+  filter_max_cc: 100
+
+v8_slow_strings:
+  v7_harm_mode: pad
+  channel: 9
+  program: 49  # String Ensemble 1
+  velocity: 65
+  v9_motion_mode: "low_motion"   # Layer phụ vẫn có motion chậm để khớp Pad chính
+  v9_voicing_mode: "normal"      # Layer phụ giữ voicing thường để lấp đầy mid-range
+
+  # Strings giữ tune chuẩn làm nền vững
+  enable_drift: false            # Giữ tune chuẩn để làm nền
+  drift_amount_cents: 0.0
+  drift_cycle_secs: 0.0
+
+  # Chỉ thở volume (mặc định của engine), không filter
+  enable_breath_filter: false
+  filter_min_cc: 0
+  filter_max_cc: 0
+
+harm_angelic_choir:
+  v7_harm_mode: pad
+  channel: 1
+  program: 53  # Choir Aahs
+  velocity: 70
+
+  # Choir cần ổn định, không mở quá
+  v9_voicing_mode: "stable_locked"  # Choir cần ổn định
+
+  # Choir trôi rất nhẹ để tránh bị "synth"
+  enable_drift: true
+  drift_amount_cents: 5.0
+  drift_cycle_secs: 50.0
+
+  # Choir không nên filter sweep quá nhiều, nghe sẽ giống synth
+  enable_breath_filter: false
+  filter_min_cc: 0
+  filter_max_cc: 0
+
+harm_space_voice:
+  v7_harm_mode: pad
+  channel: 1
+  program: 92  # Space Voice
+  velocity: 72
+
+  # Không gian mở, dùng cho layer không lời/voice pad
+  v9_voicing_mode: "ambient_open"
+
+  # Trôi nhẹ, dài – tạo cảm giác không gian
+  enable_drift: true
+  drift_amount_cents: 7.0
+  drift_cycle_secs: 45.0
+
+  # Space Voice thở nhẹ theo CC74, tránh sweep quá cực đoan
+  enable_breath_filter: true
+  filter_min_cc: 40
+  filter_max_cc: 80
+
+# --- 2. TRANSITION ---
+
+piano_arp:
+  v7_harm_mode: arpeggio
+  channel: 1
+  program: 46
+  velocity: 90
+
+  # Màu sắc động của Arp khi chuyển hợp âm
+  v9_color_intensity: 0.7
+  v9_voicing_mode: "normal"
+
+  # Arp thường không cần drift nhiều để giữ rõ nhịp
+  enable_drift: false
+  drift_amount_cents: 0.0
+  drift_cycle_secs: 0.0
+
+  enable_breath_filter: false
+  filter_min_cc: 0
+  filter_max_cc: 0
+
+# --- 3. ATMOSPHERE ---
+
+harm_modal_texture:
+  v7_harm_mode: modal_texture
+  channel: 1
+  program: 100
+  velocity: 70
+  v9_voicing_mode: "ambient_open"
+
+  # Texture trôi rất chậm, tạo nền xa
+  enable_drift: true
+  drift_amount_cents: 6.0
+  drift_cycle_secs: 50.0
+
+  # Texture thường không cần breath filter mạnh (tránh bị quá rõ)
+  enable_breath_filter: false
+  filter_min_cc: 0
+  filter_max_cc: 0
+
+harm_sitar_drone:
+  v7_harm_mode: modal_texture
+  channel: 1
+  program: 105
+  velocity: 72
+  v9_voicing_mode: "ambient_open"
+
+  # Drone sitar micro-drift cho cảm giác organic
+  enable_drift: true
+  drift_amount_cents: 5.0
+  drift_cycle_secs: 35.0
+
+  enable_breath_filter: false
+  filter_min_cc: 0
+  filter_max_cc: 0
+
+# --- 4. DRONE ---
+
+v9_drone_base:
+  v7_harm_mode: drone      # Chuẩn hoá mode riêng cho DroneEngineV2
+  channel: 2
+  program: 90
+  velocity: 80
+
+  # Mix level tổng cho Drone (sử dụng trong Engine)
+  v9_mix_level: 0.6
+
+  # Drone nên bám theo hơi thở nhưng không quá cực đoan
+  enable_breath: true
+  breath_depth: 15
+
+  # Drone thường giữ voicing khoá để không làm lạc cảm giác nền
+  v9_voicing_mode: "stable_locked"
+
+  # Micro-drift rất nhẹ để tránh cảm giác "tone chết"
+  enable_drift: true
+  drift_amount_cents: 3.0
+  drift_cycle_secs: 60.0
+
+  # Drone không dùng filter sweep mạnh, chủ yếu là level
+  enable_breath_filter: false
+  filter_min_cc: 0
+  filter_max_cc: 0
