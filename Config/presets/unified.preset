@@ -1,0 +1,131 @@
+zen_templates:
+  V11_FULL_TEST:
+    label: "V11 – Full Zen Test (All ON, Medium)"
+    description: >
+      Preset kiểm tra toàn bộ Neo Zen Core V11:
+      tất cả layer đều bật ở mức vừa phải, có Frequency Journey 432→528→639 Hz
+      và Brainwave Journey theta→alpha. Phù hợp để test “máy Zen” full tính năng.
+    options_override:
+      # ==== CƠ BẢN ====
+      project_name: "Neo Zen Unified V11"
+      zen_profile: "V11_FULL_TEST"
+      seed: 0
+
+      key: "C"
+      scale: "major"
+      base_tempo: 60
+      total_duration_seconds: 1080      # ~18 phút
+
+      # Auto từ chord script
+      custom_chord_progression: "I - V - vi - IV"
+      auto_duration_from_chords: true
+      bars_per_chord: 4.0
+      breaths_per_chord: 8
+
+      # ==== HƠI THỞ & CƯỜNG ĐỘ ====
+      breath_mode: "auto"              # auto chọn 2 bar / hơi ở 60 BPM
+      breath_cycle_bars: 2.0
+      master_intensity: 0.6            # cường độ tổng trung bình
+
+      # ==== TUNING & SOLFEGGIO ====
+      solf_profile: 528.0              # tần số gốc khi không dùng Journey
+      drone_mode: "key_plus_solf_drone"   # Mode 4 – Key + Solf Drone Overlay
+
+      # ==== FREQUENCY JOURNEY (3 STAGE: 432 → 528 → 639) ====
+      frequency_journey:
+        enabled: true
+        stages:
+          - label: "Stage 1 (432Hz)"
+            freq: 432.0
+            duration_pct: 0.3333
+          - label: "Stage 2 (528Hz)"
+            freq: 528.0
+            duration_pct: 0.3333
+          - label: "Stage 3 (639Hz)"
+            freq: 639.0
+            duration_pct: 0.3334
+
+      # ==== BINAURAL & BRAINWAVE (ON, JOURNEY MỨC VỪA) ====
+      brainwave_enable: true
+      brainwave_band: "theta"          # khi không dùng journey sẽ rơi về theta
+      binaural_beat_hz: 0.0            # 0 = dùng mặc định theo band
+
+      brainwave_journey:
+        enabled: true
+        lock_to_frequency: true        # cố map Stage 1↔1, 2↔2...
+        stages:
+          - label: "Brainwave Stage 1 (theta)"
+            band: "theta"
+            beat_hz: 4.5
+            duration_pct: 0.3333
+          - label: "Brainwave Stage 2 (theta)"
+            band: "theta"
+            beat_hz: 5.0
+            duration_pct: 0.3333
+          - label: "Brainwave Stage 3 (alpha)"
+            band: "alpha"
+            beat_hz: 8.0
+            duration_pct: 0.3334
+
+      # ==== MELODY & HARMONY ====
+      v9_melody_persona: "flute_flow"  # match app.py lựa chọn “Flute (Trúc)”
+      v9_harm_style: "layered"         # Layered Pad (Deep)
+      v9_drone_profile: "v9_drone_base"
+
+      # ==== PULSE (Heart Layer V10) – BẬT CẢ HEART + TEXTURE ====
+      enable_pulse: true
+      enable_pulse_layer: true
+      enable_heartbeat_layer: true
+      enable_kalimba_layer: true
+      v9_pulse_profile: "pulse_kalimba_texture"
+      pulse_activity_threshold: 0.6
+      pulse_reduction_ratio: 0.6
+
+      # ==== AIR LAYER (AirEngineV1) ====
+      v10_air_profile: "air_crystal_shimmer"
+      v9_air_mode: "air_shimmer"       # meta cũ, không ảnh hưởng engine
+
+      # ==== CHIME LAYER ====
+      chime_profile: "chime_crystal_bell"
+      v10_chime_profile: "chime_crystal_bell"
+      chime_density: 0.5
+      chime_mode: "breathing"          # theo nhịp thở
+
+      # ==== NATURE LAYER (ON) ====
+      enable_nature_layer: true
+      v10_nature_profile: "v10_nature_default"
+      nature_profile: "forest"         # forest / rain / river / ocean / fireplace
+      nature_intensity: 0.7
+      nature_breath_amount: 0.7
+      nature_breakdown_mode: "soft"    # mềm hơn ở Breakdown
+
+      # ==== VOCAL LAYER (TẠM OFF, CHỪA SLOT TƯƠNG LAI) ====
+      enable_vocal_layer: false
+      v10_vocal_profile: "v10_vocal_om"
+      vocal_mode: "om_pulse"
+      vocal_density: 0.2
+      vocal_breakdown_mode: "soft"
+      vocal_breath_amount: 0.5
+
+      # ==== BASS LAYER (ON) ====
+      enable_bass_layer: true
+      v10_bass_profile: "v10_bass_warm"
+
+      # ==== HANDPAN LAYER (ON MỨC VỪA) ====
+      enable_handpan_layer: true
+      v10_handpan_profile: "v10_handpan_soft"
+      handpan_tuning_mode: "pure_key"  # safe: theo key chính
+
+      # ==== PHASE 2 & 3 – SEMITONE JOURNEY ====
+      enable_phase2_semitone: true
+      phase2_max_semitone: 6
+      enable_phase3_journey: true
+      phase3_max_semitone_per_stage: 4
+
+      # ==== KHÁC & DEBUG ====
+      output_root: "output"
+      debug_print_segments: false
+      debug_print_notes: false
+
+    # Có thể để trống, dành cho meta khác nếu sau này cần
+    preset_override: {}
