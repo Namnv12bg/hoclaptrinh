@@ -1,0 +1,585 @@
+# Tệp: config/melody_profiles.yaml
+# (FINAL V10.11.2) - NEO MELODY / PULSE / AIR / CHIME / NATURE / VOCAL PROFILES
+#
+# Dùng cho:
+#   - MelodyEngineV10
+#   - PulseEngineV10
+#   - AirEngineV1 (V10)
+#   - ChimeEngineV3
+#   - NatureEngineV1
+#   - VocalEngineV1
+#
+# Ghi chú:
+# - Trường "bắt buộc" mà Engine thực sự dùng: program, channel, (velocity).
+# - Các field khác (persona, velocity_base, humanize_velocity, ...) là metadata
+#   để Zen Core / UI map sang user_options cho đúng "tính cách".
+# - Bạn có thể giữ v9_melody_profiles.yaml riêng cho chế độ classic.
+# - ĐÃ CHUẨN HOÁ:
+#   + Pulse profile chính dùng trong UI/preset: **pulse_kalimba_texture**
+#     (khớp với v9_pulse_profile trong unified.preset.yaml & app.py).
+
+# =========================
+# 1. MELODY VOICE (V10)
+# =========================
+
+flute_flow:
+  name: "Flute Flow"
+  role: "melody"
+  engine: "melody_v10"
+  program: 74          # GM: Flute
+  channel: 3
+  # Gợi ý map sang user_options:
+  velocity_base: 70
+  humanize_velocity: 8
+  persona: "flute"
+  breath_intensity: 0.9
+  enable_beat_stress: true
+
+shakuhachi_zen:
+  name: "Shakuhachi Zen"
+  role: "melody"
+  engine: "melody_v10"
+  program: 78          # GM: Shakuhachi
+  channel: 3
+  velocity_base: 68
+  humanize_velocity: 10
+  persona: "flute"
+  breath_intensity: 1.0
+  enable_beat_stress: true
+
+pan_flute_forest:
+  name: "Pan Flute Forest"
+  role: "melody"
+  engine: "melody_v10"
+  program: 76          # GM: Pan Flute
+  channel: 3
+  velocity_base: 72
+  humanize_velocity: 10
+  persona: "flute"
+  breath_intensity: 0.85
+  enable_beat_stress: true
+
+piano_kintsugi:
+  name: "Piano Kintsugi"
+  role: "melody"
+  engine: "melody_v10"
+  program: 1           # GM: Acoustic Grand Piano
+  channel: 3
+  velocity_base: 75
+  humanize_velocity: 12
+  persona: "piano_kintsugi"
+  breath_intensity: 0.3      # Ít thở, rơi tự do
+  enable_beat_stress: true
+
+piano_mantra:
+  name: "Piano Mantra"
+  role: "melody"
+  engine: "melody_v10"
+  program: 1
+  channel: 3
+  velocity_base: 70
+  humanize_velocity: 6
+  persona: "piano_mantra"
+  breath_intensity: 0.2
+  enable_beat_stress: false  # Mantra nên đều, ít nhấn phách
+
+sitar_mantra:
+  name: "Sitar Mantra"
+  role: "melody"
+  engine: "melody_v10"
+  program: 105        # GM: Sitar
+  channel: 3
+  velocity_base: 72
+  humanize_velocity: 10
+  persona: "sitar_mantra"
+  breath_intensity: 0.2
+  enable_beat_stress: false
+
+flute_deep_sleep:
+  name: "Flute Deep Sleep"
+  role: "melody"
+  engine: "melody_v10"
+  program: 74
+  channel: 3
+  velocity_base: 60
+  humanize_velocity: 6
+  persona: "flute_deep_sleep"
+  breath_intensity: 0.4
+  enable_beat_stress: false   # Deep sleep: ít dao động năng lượng
+
+crystal_bell_solo:
+  name: "Crystal Bell Solo"
+  role: "melody"
+  engine: "melody_v10"
+  program: 113        # GM: Crystal
+  channel: 3
+  velocity_base: 80
+  humanize_velocity: 5
+  persona: "crystal_bell"
+  breath_intensity: 0.1
+  enable_beat_stress: false
+
+piano_zen_flow:
+  name: "Piano Zen Flow"
+  role: "melody"
+  engine: "melody_v10"
+  program: 1
+  channel: 3
+  velocity_base: 72
+  humanize_velocity: 10
+  persona: "piano_zen_flow"
+  breath_intensity: 0.8
+  enable_beat_stress: true
+
+# =========================
+# 2. PULSE (HEART LAYER) – V10
+# =========================
+# Dùng để cấp profile Kalimba/Texture cho PulseEngineV10.
+# Heartbeat chính đang cố định GM Taiko (117) trong engine.
+#
+# Pulse chính dùng trong Unified UI:
+#   - pulse_kalimba_texture
+
+pulse_kalimba_texture:
+  name: "Pulse Kalimba Texture"
+  role: "pulse_texture"
+  engine: "pulse_v10"
+  program: 109        # GM: Kalimba
+  channel: 8          # Trùng track "8. HEART (Texture)"
+  base_density: 0.5
+  humanize_vel: 8
+
+  # Switches cho PulseEngineV10
+  enable_pulse_layer: true
+  enable_heartbeat_layer: true
+  enable_kalimba_layer: true
+
+  # Tham số activity-trim (được PulseEngineV10 đọc nếu không override từ user_options)
+  pulse_activity_threshold: 0.6   # 0..1: Activity >= threshold thì Pulse bị giảm
+  pulse_reduction_ratio: 0.6      # 0..1: tỉ lệ giảm mật độ khi né Melody
+
+pulse_heartbeat:
+  name: "Pulse Heartbeat"
+  role: "pulse_texture"
+  engine: "pulse_v10"
+  program: 117        # gợi ý: patch drum sâu
+  channel: 8
+  base_density: 0.3
+  humanize_vel: 6
+
+  enable_pulse_layer: false
+  enable_heartbeat_layer: true
+  enable_kalimba_layer: false
+
+  pulse_activity_threshold: 0.6
+  pulse_reduction_ratio: 0.6
+
+pulse_shaman:
+  name: "Pulse Shaman Drum"
+  role: "pulse_texture"
+  engine: "pulse_v10"
+  program: 116        # GM: Taiko / frame drum
+  channel: 8
+  base_density: 0.5
+  humanize_vel: 10
+
+  enable_pulse_layer: true
+  enable_heartbeat_layer: true
+  enable_kalimba_layer: false
+
+  pulse_activity_threshold: 0.6
+  pulse_reduction_ratio: 0.6
+
+pulse_marimba:
+  name: "Pulse Marimba"
+  role: "pulse_texture"
+  engine: "pulse_v10"
+  program: 13         # GM: Marimba
+  channel: 8
+  base_density: 0.5
+  humanize_vel: 8
+
+  enable_pulse_layer: true
+  enable_heartbeat_layer: true
+  enable_kalimba_layer: false
+
+  pulse_activity_threshold: 0.6
+  pulse_reduction_ratio: 0.6
+
+pulse_woodblock:
+  name: "Pulse Woodblock"
+  role: "pulse_texture"
+  engine: "pulse_v10"
+  program: 115        # GM: Woodblock
+  channel: 8
+  base_density: 0.4
+  humanize_vel: 7
+
+  enable_pulse_layer: true
+  enable_heartbeat_layer: true
+  enable_kalimba_layer: false
+
+  pulse_activity_threshold: 0.6
+  pulse_reduction_ratio: 0.6
+
+# =========================
+# 3. AIR (SPIRIT LAYER)
+# =========================
+# Dùng thẳng cho AirEngineV1 (V10.9.x)
+
+air_crystal_shimmer:
+  name: "Air - Crystal Shimmer"
+  role: "air"
+  engine: "air_v1"
+  program: 99         # GM: FX 3 (crystal)
+  channel: 10
+  velocity: 50
+  enable_morph: true  # AirEngineV1 sẽ đọc flag này
+  # Metadata gợi ý thêm (Engine có thể bỏ qua nếu không dùng):
+  air_density: 0.6
+  air_motion: "slow"
+
+air_granular:
+  name: "Air - Granular"
+  role: "air"
+  engine: "air_v1"
+  program: 99         # cùng patch crystal nhưng xử lý granular
+  channel: 10
+  velocity: 50
+  enable_morph: true
+  air_density: 0.7
+  air_motion: "granular"
+
+air_shimmer:
+  name: "Air - Pad Shimmer"
+  role: "air"
+  engine: "air_v1"
+  program: 89         # GM: Warm Pad
+  channel: 10
+  velocity: 55
+  enable_morph: true
+  air_density: 0.5
+  air_motion: "slow"
+
+# =========================
+# 4. CHIME
+# =========================
+# Dùng cho ChimeEngineV3
+
+chime_crystal_bell:
+  name: "Zen Chime"
+  role: "chime"
+  engine: "chime_v3"
+  program: 113        # GM: Crystal
+  channel: 11
+  velocity: 85
+  duration_ticks: 480
+  base_density: 0.3
+  breath_sync: 0.5
+
+# =========================
+# 5. NATURE PROFILES (V10)
+# =========================
+# Dùng cho NatureEngineV1 qua key:
+#   - v10_nature_default  (forest balanced)
+#   - v10_nature_rain     (mưa dày hơn, high-mid)
+#   - v10_nature_ocean    (swell chậm, low-mid)
+#   - v10_nature_fireplace (crackle gần, thân mật)
+#
+# Zen Core:
+#   user_options.v10_nature_profile = một trong các key dưới.
+
+v10_nature_default:
+  name: "Nature Default - Forest & Water"
+  role: "nature"
+  engine: "nature_v1"
+  program: 98          # Tuỳ patch SF2/VST map, tạm dùng FX
+  channel: 9
+
+  # Switch & behaviour
+  enable_nature_layer: true
+  nature_profile: "forest"        # "rain" | "forest" | "river" | "ocean" | "fireplace"
+  nature_intensity: 0.7           # Độ dày riêng của Nature
+  master_intensity: 0.6           # Intensity tổng thể preset
+  nature_breakdown_mode: "soft"   # "mute" | "soft" | "normal"
+
+  # Velocity & pitch range
+  velocity: 80
+  vel_jitter: 8
+  nature_root_note: 60            # C4
+  nature_octave_low: 4
+  nature_octave_high: 6
+
+  # Timing & activity
+  nature_min_spacing_beats: 1.0   # spacing tối thiểu giữa các event
+  nature_activity_threshold: 0.85 # Né vùng Activity cao (Melody/Pulse)
+  nature_breath_amount: 0.7       # 0..1: mức breath-aware
+  nature_pan_jitter: 10           # ± CC10 quanh center
+
+v10_nature_rain:
+  name: "Nature Rain - Cozy Shower"
+  role: "nature"
+  engine: "nature_v1"
+  program: 98
+  channel: 9
+
+  enable_nature_layer: true
+  nature_profile: "rain"
+  nature_intensity: 0.8           # mưa dày hơn một chút
+  master_intensity: 0.7
+  nature_breakdown_mode: "soft"   # trong breakdown vẫn còn mưa rất nhẹ
+
+  velocity: 78
+  vel_jitter: 10
+  nature_root_note: 60
+  nature_octave_low: 4
+  nature_octave_high: 5
+
+  nature_min_spacing_beats: 0.5   # mưa dày hơn default
+  nature_activity_threshold: 0.9  # background, cho phép chồng lên Activity
+  nature_breath_amount: 0.5
+  nature_pan_jitter: 12
+
+v10_nature_ocean:
+  name: "Nature Ocean - Slow Swell"
+  role: "nature"
+  engine: "nature_v1"
+  program: 98
+  channel: 9
+
+  enable_nature_layer: true
+  nature_profile: "ocean"
+  nature_intensity: 0.6           # vừa phải nhưng event rất dài
+  master_intensity: 0.7
+  nature_breakdown_mode: "normal" # vẫn giữ wave liên tục kể cả breakdown
+
+  velocity: 70
+  vel_jitter: 6
+  nature_root_note: 48            # C3, trầm hơn
+  nature_octave_low: 3
+  nature_octave_high: 4
+
+  nature_min_spacing_beats: 2.0   # swell dài, thưa
+  nature_activity_threshold: 0.8
+  nature_breath_amount: 0.6
+  nature_pan_jitter: 6
+
+v10_nature_fireplace:
+  name: "Nature Fireplace - Hearth"
+  role: "nature"
+  engine: "nature_v1"
+  program: 98
+  channel: 9
+
+  enable_nature_layer: true
+  nature_profile: "fireplace"
+  nature_intensity: 0.5           # crackle thưa
+  master_intensity: 0.5
+  nature_breakdown_mode: "soft"   # trong breakdown chỉ còn tiếng lửa lách tách
+
+  velocity: 82
+  vel_jitter: 12
+  nature_root_note: 55            # G3
+  nature_octave_low: 3
+  nature_octave_high: 4
+
+  nature_min_spacing_beats: 0.75
+  nature_activity_threshold: 0.8
+  nature_breath_amount: 0.4
+  nature_pan_jitter: 16
+
+# =========================
+# 6. VOCAL PROFILES (V10)
+# =========================
+# Dùng cho VocalEngineV1 qua key:
+#   - v10_vocal_om          (mặc định, OM dài, thưa)
+#   - v10_vocal_om_deep     (long_drone, siêu ít, cho deep meditation)
+#   - v10_vocal_chant_soft  (chant_pattern, mềm, dùng cho mantra)
+
+v10_vocal_om:
+  name: "Vocal OM Drone"
+  role: "vocal"
+  engine: "vocal_v1"
+  program: 52          # GM: Choir Aahs (tạm, tuỳ patch thật)
+  channel: 10
+
+  # Switch & mode
+  enable_vocal_layer: true
+  vocal_mode: "om_pulse"          # "om_pulse" | "long_drone" | "call_response" | "chant_pattern"
+  vocal_density: 0.15             # tổng thể rất thưa
+  vocal_breakdown_mode: "soft"    # "soft" | "mute" | "normal"
+
+  # Pitch / register
+  vocal_register_note: 50         # D3 (tuỳ sample thật)
+
+  # Breath & sections
+  vocal_breath_amount: 0.5        # 0..1: breath modulation
+  vocal_sections:                 # section_type cho phép có vocal
+    - grounding
+    - intro
+    - immersion
+    - peak
+    - awakening
+    - integration
+    - outro
+
+  # Velocity & jitter
+  vocal_velocity: 70
+  vocal_vel_jitter: 4
+
+  # Spacing & activity
+  vocal_min_gap_ticks: 1920       # ~4 bars @ PPQ=480
+  vocal_activity_weight: 1.0      # Activity weight cho ActivityMap
+
+v10_vocal_om_deep:
+  name: "Vocal OM Deep"
+  role: "vocal"
+  engine: "vocal_v1"
+  program: 52
+  channel: 10
+
+  enable_vocal_layer: true
+  vocal_mode: "long_drone"        # mỗi segment chỉ 1 OM rất dài (tuỳ density)
+  vocal_density: 0.08             # cực kỳ ít, chỉ thỉnh thoảng vang lên
+  vocal_breakdown_mode: "mute"    # trong breakdown tắt hẳn, chỉ còn nhạc cụ
+
+  vocal_register_note: 45         # A2, trầm hơn (deep OM)
+  vocal_breath_amount: 0.4
+
+  vocal_sections:
+    - grounding
+    - intro
+    - immersion
+    - integration
+    - outro
+
+  vocal_velocity: 68
+  vocal_vel_jitter: 3
+
+  vocal_min_gap_ticks: 2880       # ~6 bars @ PPQ=480
+  vocal_activity_weight: 0.8
+
+v10_vocal_chant_soft:
+  name: "Vocal Soft Chant"
+  role: "vocal"
+  engine: "vocal_v1"
+  program: 53          # GM: Choir Oohs (hoặc patch chant nhẹ)
+  channel: 10
+
+  enable_vocal_layer: true
+  vocal_mode: "chant_pattern"     # chuỗi 3–6 note ngắn trong 1 segment
+  vocal_density: 0.25             # vẫn thấp nhưng dày hơn OM
+  vocal_breakdown_mode: "soft"
+
+  vocal_register_note: 55         # G3 – trung hòa, không quá trầm/cao
+  vocal_breath_amount: 0.6        # chant sống theo hơi thở mạnh hơn
+
+  vocal_sections:
+    - grounding
+    - intro
+    - immersion
+    - peak
+    - awakening
+    - integration
+    - outro
+
+  vocal_velocity: 72
+  vocal_vel_jitter: 5
+
+  vocal_min_gap_ticks: 1440       # ~3 bars @ PPQ=480
+  vocal_activity_weight: 1.2      # để lớp khác “thấy” chant rõ hơn trong ActivityMap
+
+project_name: Neo Zen Unified V10
+zen_profile: custom
+seed: 0
+key: C
+scale: major
+base_tempo: 60
+total_duration_seconds: 1080
+custom_chord_progression: I - V - vi - IV
+auto_duration_from_chords: true
+breaths_per_chord: 8
+bars_per_chord: 4.0
+v9_harm_style: layered
+v9_melody_persona: piano_mantra
+enable_pulse: true
+v9_pulse_profile: pulse_kalimba_texture
+enable_pulse_layer: true
+enable_heartbeat_layer: true
+enable_kalimba_layer: true
+pulse_activity_threshold: 0.6
+pulse_reduction_ratio: 0.6
+v10_air_profile: air_crystal_shimmer
+v10_chime_profile: chime_crystal_bell
+chime_mode: breathing
+chime_density: 0.1
+master_intensity: 0.5
+breath_mode: deep
+breath_cycle_bars: 2.0
+enable_breath_filter: true
+drone_mode: solf_root
+solf_profile: 432.0
+frequency_journey:
+  enabled: true
+  stages:
+  - label: Stage 1 (432Hz)
+    duration_pct: 0.3333
+    freq: 432.0
+  - label: Stage 2 (528Hz)
+    duration_pct: 0.3333
+    freq: 528.0
+  - label: Stage 3 (639Hz)
+    duration_pct: 0.3333
+    freq: 639.0
+brainwave_enable: true
+brainwave_band: delta
+brainwave_journey:
+  enabled: true
+  lock_to_frequency: true
+  stages:
+  - label: Brainwave Stage 1 (delta)
+    duration_pct: 0.25
+    band: delta
+    beat_hz: 0.0
+  - label: Brainwave Stage 2 (delta)
+    duration_pct: 0.25
+    band: delta
+    beat_hz: 0.0
+  - label: Brainwave Stage 3 (delta)
+    duration_pct: 0.25
+    band: delta
+    beat_hz: 0.0
+  - label: Brainwave Stage 4 (delta)
+    duration_pct: 0.25
+    band: delta
+    beat_hz: 0.0
+binaural:
+  enabled: true
+  profile: v9_drone_base
+  beat_hz: 4.0
+enable_nature_layer: true
+v10_nature_profile: v10_nature_default
+enable_vocal_layer: true
+v10_vocal_profile: v10_vocal_om
+enable_bass_layer: true
+v10_bass_profile: v10_bass_warm
+enable_handpan_layer: false
+v10_handpan_profile: v10_handpan_soft
+handpan_tuning_mode: follow_solf
+enable_phase2_semitone: false
+phase2_max_semitone: 6
+enable_phase3_journey: false
+phase3_max_semitone_per_stage: 4
+zen_mode_enabled: true
+debug_print_segments: true
+debug_print_notes: true
+v9_air_mode: air_shimmer
+nature_profile: forest
+nature_intensity: 0.7
+nature_breath_amount: 0.7
+nature_breakdown_mode: soft
+vocal_mode: om_pulse
+vocal_density: 0.2
+vocal_breakdown_mode: soft
+vocal_breath_amount: 0.5
+binaural_beat_hz: 0.0
